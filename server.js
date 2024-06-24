@@ -16,6 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Ruta para manejar el envío del formulario
 app.post('/send-email', async (req, res) => {
     const { name, email, subject, message } = req.body;
+    console.log(email);
+    console.log(name);
+    console.log(message);
 
     // Configurar el transporte de nodemailer
     let transporter = nodemailer.createTransport({
