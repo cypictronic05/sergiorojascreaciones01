@@ -35,15 +35,24 @@ app.post('/send-email', async (req, res) => {
         text: `Nombre: ${name}\nCorreo electrónico: ${email}\nAsunto: ${subject}\n\nMensaje:\n${message}`
     };
 
+    // try {
+    //     await transporter.sendMail(mailOptions);
+    //     res.status(200).send('Correo enviado con éxito.');
+    //     console.log(process.env.EMAIL);
+    // } catch (error) {
+    //     console.error(error);
+    //     res.status(500).send('Error al enviar el correo.');
+    //     console.log(process.env.EMAIL);
+    // }
+
     try {
         await transporter.sendMail(mailOptions);
-        res.status(200).send('Correo enviado con éxito.');
-        console.log(process.env.EMAIL);
+        res.status(200).json({ message: 'Correo enviado con éxito.' });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error al enviar el correo.');
-        console.log(process.env.EMAIL);
+        res.status(500).json({ message: 'Error al enviar el correo.' });
     }
+
 });
 
 app.listen(port, () => {
