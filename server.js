@@ -40,12 +40,15 @@ app.post('/send-email', async (req, res) => {
     try {
         await transporter.sendMail(mailOptions);
         res.status(200).send('Correo enviado con éxito.');
+        console.log(process.env.EMAIL);
     } catch (error) {
         console.error(error);
         res.status(500).send('Error al enviar el correo.');
+        console.log(process.env.EMAIL);
     }
 });
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
+    console.log(process.env.EMAIL);
 });
