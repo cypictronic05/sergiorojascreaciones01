@@ -32,7 +32,7 @@ app.post('/send-email', async (req, res) => {
     // Configurar el contenido del correo
     let mailOptions = {
         from: process.env.EMAIL,
-        to: process.env.EMAIL, // Tu correo
+        to: "sergiorojascreaciones@gmail.com", // Tu correo
         subject: `Nuevo mensaje de contacto: ${subject}`,
         text: `Nombre: ${name}\nCorreo electrónico: ${email}\nAsunto: ${subject}\n\nMensaje:\n${message}`
     };
