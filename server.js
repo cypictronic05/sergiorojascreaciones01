@@ -51,4 +51,5 @@ app.post('/send-email', async (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
     console.log(process.env.EMAIL);
+    console.log(process.env.PASSWORD);
 });
