@@ -55,6 +55,11 @@ app.post('/send-email', async (req, res) => {
 
 });
 
+// Ruta para manejar errores 404
+app.use((req, res, next) => {
+    res.status(404).send('Página no encontrada');
+});
+
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
     console.log(process.env.EMAIL);
