@@ -282,10 +282,10 @@
     e.preventDefault()//para que no haga el submit automático
 
     const datos = {
-      name:document.querySelector('#name'),
-        email: document.querySelector('#email'),
-        subject: document.querySelector('#subject'),
-        message: document.querySelector('#message')
+      name:document.querySelector('#name').value,
+        email: document.querySelector('#email').value,
+        subject: document.querySelector('#subject').value,
+        message: document.querySelector('#message').value
     }
 
     console.log(datos);
