@@ -230,6 +230,7 @@
         const response = await fetch('/send-email', {
           method: 'POST',
           headers: {
+            'Accept':'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(datos)
@@ -246,7 +247,9 @@
       } catch (error) {
         console.error(error);
         alert('Hubo un problema al enviar el formulario.');
+        return error;
       }
+      return result;
     });
     </script>
     
