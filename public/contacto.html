@@ -246,8 +246,8 @@
           throw new Error(result.message || 'Error al enviar el formulario.');
         }
       } catch (error) {
-        console.error('Error:', error);
         alert('Hubo un problema al enviar el formulario.');
+        console.log('error '+error);
       }
     });
   </script>
