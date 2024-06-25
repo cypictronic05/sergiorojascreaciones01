@@ -214,7 +214,7 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    document.querySelector('#enviar-mensaje').addEventListener('click', function (e) {
+    document.querySelector('#enviar-mensaje').addEventListener('click', async function(e) {
       e.preventDefault(); // Evita el envío automático del formulario
   
       const datos = {
@@ -227,7 +227,7 @@
       console.log(datos);
   
       try {
-        const response = fetch('/send-email', {
+        const response = await fetch('/send-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -238,7 +238,7 @@
         console.log('Entro al fetch 4');
   
         const result = response.json();
-  
+        //console.log(result);
         if (response.ok) {
           console.log({result});
           alert('Mensaje enviado correctamente');
@@ -246,9 +246,11 @@
           throw new Error(result.message || 'Error al enviar el formulario.');
         }
       } catch (error) {
+        console.log(response.json);
         alert('Hubo un problema al enviar el formulario.');
-        console.log('error '+error);
+        //console.log('error '+error);
       }
+      //return Response.json;
     });
   </script>
  
