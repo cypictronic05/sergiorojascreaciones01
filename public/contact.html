@@ -276,7 +276,7 @@
     });
 </script>   -->
 
-<script>
+<!-- <script>
   document.querySelector('#enviar-mensaje').addEventListener('click',e=>
   {
     e.preventDefault()//para que no haga el submit automático
@@ -310,7 +310,46 @@
     return false //para queno haga el submit automatico
   })
 </script>
+ -->
 
+ <script>
+  document.querySelector('#enviar-mensaje').addEventListener('click', async function (e) {
+    e.preventDefault(); // Evita el envío automático del formulario
+
+    const datos = {
+      name: document.querySelector('#name').value,
+      email: document.querySelector('#email').value,
+      subject: document.querySelector('#subject').value,
+      message: document.querySelector('#message').value
+    };
+
+    console.log(datos);
+
+    try {
+      const response = await fetch('/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      });
+
+      console.log('Entro al fetch');
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log({result});
+        alert('Mensaje enviado correctamente');
+      } else {
+        throw new Error(result.message || 'Error al enviar el formulario.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Hubo un problema al enviar el formulario.');
+    }
+  });
+</script>
 
 
 </body>
