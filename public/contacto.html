@@ -214,7 +214,7 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    document.querySelector('#enviar-mensaje').addEventListener('click', async function (e) {
+    document.querySelector('#enviar-mensaje').addEventListener('click', function (e) {
       e.preventDefault(); // Evita el envío automático del formulario
   
       const datos = {
@@ -227,7 +227,7 @@
       console.log(datos);
   
       try {
-        const response = await fetch('/send-email', {
+        const response = fetch('/send-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -237,7 +237,7 @@
   
         console.log('Entro al fetch 4');
   
-        const result = await response.json();
+        const result = response.json();
   
         if (response.ok) {
           console.log({result});
