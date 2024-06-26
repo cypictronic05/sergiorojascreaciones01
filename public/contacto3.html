@@ -225,36 +225,34 @@
       };
     
       console.log(datos);
-    
+
       try {
-        const response = await fetch('/send-email', {
-          method: 'POST',
-          headers: {
-            'Accept':'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(datos)
-        });
-    
-        const result = await response.json(); // Espera a que la respuesta se convierta en JSON
-    
-        if (response.ok) {
-          console.log({ result });
-          alert('Mensaje enviado correctamente');
-        } else {
-          throw new Error(result.message || 'Error al enviar el formulario.');
+        const config = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datos)
         }
+
+        const response = await fetch('/send-email',config)
+        console.log(response.message);
+        
+        if(response.ok)
+        {
+            alert('todo OK');
+            return response
+        }else{
+            alert('Algun error');
+        }
+
       } catch (error) {
-        console.error(error.message);
-        alert('Hubo un problema al enviar el formulario.');
-        return error;
+        alert('Algun error en cath');
       }
-      return result;
     });
     </script>
     
-    
- 
 </body>
 
 </html>
