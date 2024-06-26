@@ -236,7 +236,7 @@
             body: JSON.stringify(datos)
         }
 
-        const response = await fetch('/send-email',config)
+        const response = await fetch('https://sergiorojascreaciones.vercel.app/send-email',config)
         console.log(response.message);
         
         if(response.ok)
