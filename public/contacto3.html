@@ -170,7 +170,7 @@
                 <div class="error-message"></div>
                 <div class="sent-message"></div>
               </div>
-              <div class="text-center"><submit type="button" id="enviar-mensaje">Enviar Mensaje</button></div>
+              <div class="text-center"><button type="button" id="enviar-mensaje">Enviar Mensaje</button></div>
             </form>
           </div><!-- End Contact Form -->
 
@@ -214,7 +214,11 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    document.querySelector('#enviar-mensaje').addEventListener('submit', async function(e) {
+require('isomorphic-fetch');
+
+
+
+    document.querySelector('#enviar-mensaje').addEventListener('click', async function(e) {
       e.preventDefault(); // Evita el envío automático del formulario
     
       const datos = {
@@ -236,8 +240,22 @@
             body: JSON.stringify(datos)
         }
 
-        const response = await fetch('/send-email',config)
+        //const response = await fetch('/send-email',config)
+        //console.log(response);
+
+        fetch('/send-email',config)
+        .then(function(response) {
+          if (response.status >= 400) {
+            throw new Error("Bad response from server");
+          }
+          return response.json();
+        })
+        .then(function(stories) {
+          console.log(stories);
+        });
+
         console.log(response);
+
         
         if(response.ok)
         {
