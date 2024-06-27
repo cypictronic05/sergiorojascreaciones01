@@ -239,30 +239,30 @@
             body: JSON.stringify(datos)
         }
 
-        const response = await fetch('/send-email',config)
-        console.log(response);
+        // const response = await fetch('/send-email',config)
+        // console.log(response);
 
-        // fetch('/send-email',config)
-        // .then(function(response) {
-        //   if (response.status >= 400) {
-        //     throw new Error("Bad response from server");
-        //   }
-        //   return response.json();
-        // })
-        // .then(function(stories) {
-        //   console.log(stories);
-        // });
+        fetch('/send-email',config)
+        .then(function(response) {
+          if (response.status >= 400) {
+            throw new Error("Bad response from server");
+          }
+          return response.json();
+        })
+        .then(function(stories) {
+          console.log(stories);
+        });
 
         console.log(response);
 
         
-        if(response.ok)
-        {
-            alert('todo OK');
-            return response
-        }else{
-            alert('Algun error');
-        }
+        // if(response.ok)
+        // {
+        //     alert('todo OK');
+        //     return response
+        // }else{
+        //     alert('Algun error');
+        // }
 
       } catch (error) {
         alert('Algun error en cath');
