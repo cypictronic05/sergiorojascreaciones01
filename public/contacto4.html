@@ -214,10 +214,8 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-
-
-
-    document.querySelector('#enviar-mensaje').addEventListener('click', async function(e) {
+    document.querySelector('#enviar-mensaje').addEventListener('click', 
+    async function(e) {
       e.preventDefault(); // Evita el envío automático del formulario
     
       const datos = {
@@ -227,7 +225,7 @@
         message: document.querySelector('#message').value
       };
     
-      console.log(datos);
+      //console.log(datos);
 
       try {
         const config = {
@@ -248,23 +246,11 @@
             throw new Error("Bad response from server");
           }
           return response.json();
-        })
-        .then(function(stories) {
-          console.log(stories);
         });
 
         console.log(response);
 
-        
-        // if(response.ok)
-        // {
-        //     alert('todo OK');
-        //     return response
-        // }else{
-        //     alert('Algun error');
-        // }
-
-      } catch (error) {
+      }catch (error) {
         alert('Algun error en cath');
       }
     });
